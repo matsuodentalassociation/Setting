@@ -1,1 +1,447 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脳波と自律神経の関係性図</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            gap: 30px;
+        }
+        
+        .brain-section {
+            flex: 1;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .autonomic-section {
+            flex: 1;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .connection-arrow {
+            font-size: 3em;
+            color: #e74c3c;
+            align-self: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .brainwave-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .brainwave-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid;
+        }
+        
+        .brainwave-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .delta { border-left-color: #8e44ad; }
+        .theta { border-left-color: #3498db; }
+        .alpha { border-left-color: #2ecc71; }
+        .beta { border-left-color: #f39c12; }
+        .gamma { border-left-color: #e74c3c; }
+        
+        .wave-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .wave-freq {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .wave-activity {
+            font-size: 1em;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        
+        .wave-autonomic {
+            font-size: 0.9em;
+            color: #e74c3c;
+            font-weight: bold;
+            background: rgba(231, 76, 60, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+        }
+        
+        .wave-visual {
+            height: 60px;
+            margin: 15px 0;
+            position: relative;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .wave-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: translateY(-50%);
+        }
+        
+        .delta .wave-line { 
+            background: #8e44ad;
+            animation: deltaWave 4s infinite linear;
+        }
+        .theta .wave-line { 
+            background: #3498db;
+            animation: thetaWave 2s infinite linear;
+        }
+        .alpha .wave-line { 
+            background: #2ecc71;
+            animation: alphaWave 1s infinite linear;
+        }
+        .beta .wave-line { 
+            background: #f39c12;
+            animation: betaWave 0.5s infinite linear;
+        }
+        .gamma .wave-line { 
+            background: #e74c3c;
+            animation: gammaWave 0.25s infinite linear;
+        }
+        
+        @keyframes deltaWave {
+            0% { transform: translateY(-50%) scaleY(1); }
+            25% { transform: translateY(-50%) scaleY(3); }
+            50% { transform: translateY(-50%) scaleY(1); }
+            75% { transform: translateY(-50%) scaleY(3); }
+            100% { transform: translateY(-50%) scaleY(1); }
+        }
+        
+        @keyframes thetaWave {
+            0% { transform: translateY(-50%) scaleY(1); }
+            25% { transform: translateY(-50%) scaleY(4); }
+            50% { transform: translateY(-50%) scaleY(1); }
+            75% { transform: translateY(-50%) scaleY(4); }
+            100% { transform: translateY(-50%) scaleY(1); }
+        }
+        
+        @keyframes alphaWave {
+            0% { transform: translateY(-50%) scaleY(1); }
+            25% { transform: translateY(-50%) scaleY(5); }
+            50% { transform: translateY(-50%) scaleY(1); }
+            75% { transform: translateY(-50%) scaleY(5); }
+            100% { transform: translateY(-50%) scaleY(1); }
+        }
+        
+        @keyframes betaWave {
+            0% { transform: translateY(-50%) scaleY(1); }
+            25% { transform: translateY(-50%) scaleY(3); }
+            50% { transform: translateY(-50%) scaleY(1); }
+            75% { transform: translateY(-50%) scaleY(3); }
+            100% { transform: translateY(-50%) scaleY(1); }
+        }
+        
+        @keyframes gammaWave {
+            0% { transform: translateY(-50%) scaleY(1); }
+            25% { transform: translateY(-50%) scaleY(2); }
+            50% { transform: translateY(-50%) scaleY(1); }
+            75% { transform: translateY(-50%) scaleY(2); }
+            100% { transform: translateY(-50%) scaleY(1); }
+        }
+        
+        .relationship-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .relationship-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .relationship-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .nervous-system {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sympathetic {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .parasympathetic {
+            border-left: 5px solid #27ae60;
+        }
+        
+        .nervous-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .nervous-description {
+            font-size: 1em;
+            color: #34495e;
+            line-height: 1.6;
+        }
+        
+        .wave-correlation {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .main-diagram {
+                flex-direction: column;
+            }
+            
+            .relationship-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .connection-arrow {
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 脳波と自律神経の関係性</h1>
+        
+        <div class="main-diagram">
+            <div class="brain-section">
+                <div class="section-title">🧠 脳波活動</div>
+                <div>大脳皮質の神経細胞群の電気的活動</div>
+                <div style="margin-top: 15px;">
+                    <strong>測定方法:</strong> 脳波計(EEG)<br>
+                    <strong>周波数帯域:</strong> 0.5-100Hz<br>
+                    <strong>振幅:</strong> 10-100μV
+                </div>
+            </div>
+            
+            <div class="connection-arrow">⇄</div>
+            
+            <div class="autonomic-section">
+                <div class="section-title">🫀 自律神経系</div>
+                <div>内臓機能を調節する神経系</div>
+                <div style="margin-top: 15px;">
+                    <strong>交感神経:</strong> 活動・興奮状態<br>
+                    <strong>副交感神経:</strong> 休息・回復状態<br>
+                    <strong>調節機能:</strong> 心拍・呼吸・消化など
+                </div>
+            </div>
+        </div>
+        
+        <div class="brainwave-grid">
+            <div class="brainwave-card delta">
+                <div class="wave-name">δ波（デルタ波）</div>
+                <div class="wave-freq">0.5-4 Hz</div>
+                <div class="wave-visual">
+                    <div class="wave-line"></div>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong><br>
+                    • 深い睡眠（ノンレム睡眠）<br>
+                    • 無意識状態<br>
+                    • 深いリラックス
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 副交感神経優位<br>
+                    成長ホルモン分泌、組織修復
+                </div>
+            </div>
+            
+            <div class="brainwave-card theta">
+                <div class="wave-name">θ波（シータ波）</div>
+                <div class="wave-freq">4-8 Hz</div>
+                <div class="wave-visual">
+                    <div class="wave-line"></div>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong><br>
+                    • 浅い睡眠・まどろみ<br>
+                    • 深い瞑想状態<br>
+                    • 創造性・直感
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 副交感神経優位<br>
+                    ストレス軽減、記憶統合
+                </div>
+            </div>
+            
+            <div class="brainwave-card alpha">
+                <div class="wave-name">α波（アルファ波）</div>
+                <div class="wave-freq">8-13 Hz</div>
+                <div class="wave-visual">
+                    <div class="wave-line"></div>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong><br>
+                    • リラックス・安静<br>
+                    • 目を閉じた覚醒状態<br>
+                    • 集中・瞑想
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> バランス良好<br>
+                    心拍安定、血圧正常化
+                </div>
+            </div>
+            
+            <div class="brainwave-card beta">
+                <div class="wave-name">β波（ベータ波）</div>
+                <div class="wave-freq">13-30 Hz</div>
+                <div class="wave-visual">
+                    <div class="wave-line"></div>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong><br>
+                    • 通常の覚醒状態<br>
+                    • 集中・思考<br>
+                    • 論理的活動
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 交感神経やや優位<br>
+                    適度な覚醒、認知機能活性
+                </div>
+            </div>
+            
+            <div class="brainwave-card gamma">
+                <div class="wave-name">γ波（ガンマ波）</div>
+                <div class="wave-freq">30-100 Hz</div>
+                <div class="wave-visual">
+                    <div class="wave-line"></div>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong><br>
+                    • 高度な認知活動<br>
+                    • 興奮・ストレス<br>
+                    • 複雑な情報処理
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 交感神経優位<br>
+                    心拍増加、血圧上昇、覚醒度最高
+                </div>
+            </div>
+        </div>
+        
+        <div class="relationship-section">
+            <div class="relationship-title">🔄 相互作用メカニズム</div>
+            <div class="relationship-content">
+                <div class="nervous-system sympathetic">
+                    <div class="nervous-title">交感神経系の活性化</div>
+                    <div class="nervous-description">
+                        ストレスや興奮状態では交感神経が活性化し、ノルアドレナリンが分泌される。
+                        これにより脳の覚醒レベルが上昇し、β波やγ波が増加する。
+                    </div>
+                    <div class="wave-correlation">
+                        <strong>関連脳波:</strong> β波 ↑、γ波 ↑<br>
+                        <strong>生理反応:</strong> 心拍数↑、血圧↑、呼吸数↑
+                    </div>
+                </div>
+                
+                <div class="nervous-system parasympathetic">
+                    <div class="nervous-title">副交感神経系の活性化</div>
+                    <div class="nervous-description">
+                        リラックス状態では副交感神経が優位となり、アセチルコリンが分泌される。
+                        これにより脳の活動が落ち着き、α波、θ波、δ波が増加する。
+                    </div>
+                    <div class="wave-correlation">
+                        <strong>関連脳波:</strong> α波 ↑、θ波 ↑、δ波 ↑<br>
+                        <strong>生理反応:</strong> 心拍数↓、血圧↓、消化促進
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 25px; text-align: left; background: rgba(255, 255, 255, 0.9); border-radius: 10px; padding: 20px;">
+                <strong style="font-size: 1.2em; color: #2c3e50;">重要なポイント</strong><br>
+                <span style="color: #34495e;">
+                    脳波と自律神経系は双方向の相互作用があり、脳の活動状態が自律神経に影響を与え、
+                    同時に自律神経の状態が脳波パターンに反映される。この関係性を理解することで、
+                    瞑想、バイオフィードバック、ストレス管理などの実践的応用が可能になる。
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
