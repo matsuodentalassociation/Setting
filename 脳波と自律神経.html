@@ -33,9 +33,10 @@
         .main-diagram {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 50px;
+            align-items: stretch;
+            margin-bottom: 30px;
             gap: 30px;
+            min-height: 200px;
         }
         
         .brain-section {
@@ -45,6 +46,9 @@
             padding: 25px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .autonomic-section {
@@ -54,6 +58,9 @@
             padding: 25px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .section-title {
@@ -79,6 +86,78 @@
             50% { transform: scale(1.1); }
         }
         
+        .relationship-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .relationship-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .important-point {
+            margin-bottom: 25px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .relationship-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .nervous-system {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .balanced {
+            border-left: 5px solid #2ecc71;
+        }
+        
+        .sympathetic {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .parasympathetic {
+            border-left: 5px solid #27ae60;
+        }
+        
+        .nervous-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .nervous-description {
+            font-size: 1em;
+            color: #34495e;
+            line-height: 1.6;
+        }
+        
+        .wave-correlation {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+            color: #2c3e50;
+        }
+        
         .brainwave-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -93,6 +172,7 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-left: 5px solid;
+            text-align: center;
         }
         
         .brainwave-card:hover {
@@ -107,7 +187,7 @@
         .gamma { border-left-color: #e74c3c; }
         
         .wave-name {
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-weight: bold;
             margin-bottom: 10px;
             color: #2c3e50;
@@ -123,6 +203,19 @@
             font-size: 1em;
             color: #34495e;
             margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .wave-activity strong {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .wave-activity-list {
+            display: inline-block;
+            text-align: left;
         }
         
         .wave-autonomic {
@@ -189,69 +282,22 @@
             100% { stroke-dashoffset: 0; }
         }
         
-        .relationship-section {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .relationship-title {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .relationship-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        
-        .nervous-system {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .sympathetic {
-            border-left: 5px solid #e74c3c;
-        }
-        
-        .parasympathetic {
-            border-left: 5px solid #27ae60;
-        }
-        
-        .nervous-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .nervous-description {
-            font-size: 1em;
-            color: #34495e;
-            line-height: 1.6;
-        }
-        
-        .wave-correlation {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 1em;
-            color: #2c3e50;
-        }
-        
         @media (max-width: 1024px) and (min-width: 769px) {
             .brainwave-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .brainwave-card {
+                text-align: center;
+            }
+            
+            .wave-name {
+                font-size: 1.4em;
+            }
+            
+            .relationship-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
         
@@ -285,6 +331,14 @@
             .brainwave-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .brainwave-card {
+                text-align: center;
+            }
+            
+            .wave-name {
+                font-size: 1.4em;
+            }
         }
     </style>
 </head>
@@ -296,11 +350,9 @@
             <div class="brain-section">
                 <div class="section-title">🧠 脳波活動</div>
                 <div>大脳皮質の神経細胞群の電気的活動</div>
-                <div style="margin-top: 15px;">
-                    <strong>測定方法:</strong> 脳波計(EEG)<br>
-                    <strong>周波数帯域:</strong> 0.5-100Hz<br>
-                    <strong>振幅:</strong> 10-100μV
-                </div>
+                <div style="margin-top: 15px; text-align: left;">
+                    <div>安静・閉眼状態、覚醒状態、睡眠状態で特有な周波数を発する。睡眠時はδ波、リラックス時はα波、覚醒時はβ波など、周波数（Hz）で表すことができる。</div>
+                </div>  
             </div>
             
             <div class="connection-arrow"></div>
@@ -308,123 +360,41 @@
             <div class="autonomic-section">
                 <div class="section-title">🫀 自律神経系</div>
                 <div>内臓機能を調節する神経系</div>
-                <div style="margin-top: 15px;">
-                    <strong>交感神経:</strong> 活動・興奮状態<br>
-                    <strong>副交感神経:</strong> 休息・回復状態<br>
-                    <strong>調節機能:</strong> 心拍・呼吸・消化など
-                </div>
-            </div>
-        </div>
-        
-        <div class="brainwave-grid">
-            <div class="brainwave-card delta">
-                <div class="wave-name">δ波（デルタ波）深い睡眠状態</div>
-                <div class="wave-freq">0.5-4 Hz</div>
-                <div class="wave-visual">
-                    <svg class="wave-svg" viewBox="0 0 400 60">
-                        <path class="delta-wave" d="M0,30 Q50,10 100,30 T200,30 T300,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
-                    </svg>
-                </div>
-                <div class="wave-activity">
-                    <strong>活動状態:</strong><br>
-                    • ノンレム睡眠<br>
-                    • 無意識状態<br>
-                    • 深いリラックス
-                </div>
-                <div class="wave-autonomic">
-                    <strong>自律神経:</strong> 副交感神経優位<br>
-                    成長ホルモン分泌、組織修復
-                </div>
-            </div>
-            
-            <div class="brainwave-card theta">
-                <div class="wave-name">θ波（シータ波）浅い睡眠状態</div>
-                <div class="wave-freq">4-8 Hz</div>
-                <div class="wave-visual">
-                    <svg class="wave-svg" viewBox="0 0 400 60">
-                        <path class="theta-wave" d="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30 T250,30 T300,30 T350,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
-                    </svg>
-                </div>
-                <div class="wave-activity">
-                    <strong>活動状態:</strong><br>
-                    • まどろみ<br>
-                    • 深い瞑想状態<br>
-                    • 創造性・直感
-                </div>
-                <div class="wave-autonomic">
-                    <strong>自律神経:</strong> 副交感神経優位<br>
-                    ストレス軽減、記憶統合
-                </div>
-            </div>
-            
-            <div class="brainwave-card alpha">
-                <div class="wave-name">α波（アルファ波）リラックス状態</div>
-                <div class="wave-freq">8-13 Hz</div>
-                <div class="wave-visual">
-                    <svg class="wave-svg" viewBox="0 0 400 60">
-                        <path class="alpha-wave" d="M0,30 Q12.5,8 25,30 T50,30 T75,30 T100,30 T125,30 T150,30 T175,30 T200,30 T225,30 T250,30 T275,30 T300,30 T325,30 T350,30 T375,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
-                    </svg>
-                </div>
-                <div class="wave-activity">
-                    <strong>活動状態:</strong><br>
-                    • 安静<br>
-                    • 目を閉じた覚醒状態<br>
-                    • 集中・瞑想
-                </div>
-                <div class="wave-autonomic">
-                    <strong>自律神経:</strong> バランス良好<br>
-                    心拍安定、血圧正常化
-                </div>
-            </div>
-            
-            <div class="brainwave-card beta">
-                <div class="wave-name">β波（ベータ波）通常の覚醒状態</div>
-                <div class="wave-freq">13-30 Hz</div>
-                <div class="wave-visual">
-                    <svg class="wave-svg" viewBox="0 0 400 60">
-                        <path class="beta-wave" d="M0,30 Q6.25,12 12.5,30 T25,30 T37.5,30 T50,30 T62.5,30 T75,30 T87.5,30 T100,30 T112.5,30 T125,30 T137.5,30 T150,30 T162.5,30 T175,30 T187.5,30 T200,30 T212.5,30 T225,30 T237.5,30 T250,30 T262.5,30 T275,30 T287.5,30 T300,30 T312.5,30 T325,30 T337.5,30 T350,30 T362.5,30 T375,30 T387.5,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
-                    </svg>
-                </div>
-                <div class="wave-activity">
-                    <strong>活動状態:</strong><br>
-                    • 覚醒状態<br>
-                    • 集中・思考<br>
-                    • 論理的活動
-                </div>
-                <div class="wave-autonomic">
-                    <strong>自律神経:</strong> 交感神経やや優位<br>
-                    適度な覚醒、認知機能活性
-                </div>
-            </div>
-            
-            <div class="brainwave-card gamma">
-                <div class="wave-name">γ波（ガンマ波）高度な認知活動</div>
-                <div class="wave-freq">30-100 Hz</div>
-                <div class="wave-visual">
-                    <svg class="wave-svg" viewBox="0 0 400 60">
-                        <path class="gamma-wave" d="M0,30 Q3.125,18 6.25,30 T12.5,30 T18.75,30 T25,30 T31.25,30 T37.5,30 T43.75,30 T50,30 T56.25,30 T62.5,30 T68.75,30 T75,30 T81.25,30 T87.5,30 T93.75,30 T100,30 T106.25,30 T112.5,30 T118.75,30 T125,30 T131.25,30 T137.5,30 T143.75,30 T150,30 T156.25,30 T162.5,30 T168.75,30 T175,30 T181.25,30 T187.5,30 T193.75,30 T200,30 T206.25,30 T212.5,30 T218.75,30 T225,30 T231.25,30 T237.5,30 T243.75,30 T250,30 T256.25,30 T262.5,30 T268.75,30 T275,30 T281.25,30 T287.5,30 T293.75,30 T300,30 T306.25,30 T312.5,30 T318.75,30 T325,30 T331.25,30 T337.5,30 T343.75,30 T350,30 T356.25,30 T362.5,30 T368.75,30 T375,30 T381.25,30 T387.5,30 T393.75,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
-                    </svg>
-                </div>
-                <div class="wave-activity">
-                    <strong>活動状態:</strong><br>
-                    • 興奮・ストレス<br>
-                    • 複雑な情報処理
-                </div>
-                <div class="wave-autonomic">
-                    <strong>自律神経:</strong> 交感神経優位<br>
-                    心拍増加、血圧上昇、覚醒度最高
+                <div style="margin-top: 15px; text-align: left;">
+                    <div>呼吸や心拍、消化など無意識に働く神経システム。交感神経（活動・緊張）と副交感神経（休息・リラックス）がありバランスが崩れると心身に影響が出る。</div>
                 </div>
             </div>
         </div>
         
         <div class="relationship-section">
-            <div class="relationship-title">🔄 相互作用メカニズム</div>
+            <div class="relationship-title">🔄 自律神経を整える相互作用メカニズム</div>
+            
+            <div class="important-point">
+                <strong style="font-size: 1.2em; color: #2c3e50;text-align: center; display: block;">重要なポイント</strong><br>
+                <span style="color: #34495e;">
+                    脳波と自律神経系は双方向の相互作用があり、脳の活動状態が自律神経に影響を与え、 
+                    同時に自律神経の状態が脳波パターンに反映されます。睡眠医学の権威クリスチャン
+                    ギルミノー医学博士は、脳波の波長と同じ超低周波が脳波を同調させ、自律神経を整
+                    え睡眠やストレス管理に有効だと臨床試験を通じて立証しました。
+                </span>
+            </div>
+            
             <div class="relationship-content">
+                <div class="nervous-system balanced">
+                    <div class="nervous-title">自律神経が整っている状態</div>
+                    <div class="nervous-description">
+                        アルファ波（8-13 Hz）特にシューマン共振波で脳波を整えると自律神経も整い、心身のバランスが良い状態になる
+                    </div>
+                    <div class="wave-correlation">
+                        <strong>生理反応:</strong> 心身バランス最適化
+                    </div>
+                </div>
+                
                 <div class="nervous-system sympathetic">
                     <div class="nervous-title">交感神経系の活性化</div>
                     <div class="nervous-description">
-                        ストレスや興奮状態では交感神経が活性化し、ノルアドレナリンが分泌される。
-                        これにより脳の覚醒レベルが上昇し、β波やγ波が増加する。
+                        ベータ波（13-30 Hz）からガンマ波（30-100 Hz）の周波数で脳波を整えると
+                        交感神経が活性化する
                     </div>
                     <div class="wave-correlation">
                         <strong>生理反応:</strong> 心拍数↑、血圧↑、呼吸数↑
@@ -434,22 +404,124 @@
                 <div class="nervous-system parasympathetic">
                     <div class="nervous-title">副交感神経系の活性化</div>
                     <div class="nervous-description">
-                        リラックス状態では副交感神経が優位となり、アセチルコリンが分泌される。
-                        これにより脳の活動が落ち着き、α波、θ波、δ波が増加する。
+                        デルタ波（0.5-4 Hz）からシータ波（4-8 Hz）の周波数で脳波を整えると
+                        副交感神経が優位になる
                     </div>
                     <div class="wave-correlation">
                         <strong>生理反応:</strong> 心拍数↓、血圧↓、消化促進
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div class="brainwave-grid">
+            <div class="brainwave-card delta">
+                <div class="wave-name">δ波（デルタ波）深い睡眠状態</div>
+                <div class="wave-freq">周波数調整範囲:0.5-4 Hz</div>
+                <div class="wave-visual">
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="delta-wave" d="M0,30 Q50,10 100,30 T200,30 T300,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong>
+                    <div class="wave-activity-list">
+                        • ノンレム睡眠<br>
+                        • 無意識状態<br>
+                        • 深いリラックス
+                    </div>
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 副交感神経優位<br>
+                    成長ホルモン分泌、組織修復
+                </div>
+            </div>
             
-            <div style="margin-top: 25px; text-align: left; background: rgba(255, 255, 255, 0.9); border-radius: 10px; padding: 20px;">
-                <strong style="font-size: 1.2em; color: #2c3e50;">重要なポイント</strong><br>
-                <span style="color: #34495e;">
-                    脳波と自律神経系は双方向の相互作用があり、脳の活動状態が自律神経に影響を与え、
-                    同時に自律神経の状態が脳波パターンに反映される。この関係性を理解することで、
-                    瞑想、バイオフィードバック、ストレス管理などの実践的応用が可能になる。
-                </span>
+            <div class="brainwave-card theta">
+                <div class="wave-name">θ波（シータ波）浅い睡眠状態</div>
+                <div class="wave-freq">周波数調整範囲:4-8 Hz</div>
+                <div class="wave-visual">
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="theta-wave" d="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30 T250,30 T300,30 T350,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong>
+                    <div class="wave-activity-list">
+                        • まどろみ<br>
+                        • 深い瞑想状態<br>
+                        • 創造性・直感
+                    </div>
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 副交感神経優位<br>
+                    ストレス軽減、記憶統合
+                </div>
+            </div>
+            
+            <div class="brainwave-card alpha">
+                <div class="wave-name">α波（アルファ波）リラックス状態</div>
+                <div class="wave-freq">周波数調整値:8-13 Hz</div>
+                <div class="wave-visual">
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="alpha-wave" d="M0,30 Q12.5,8 25,30 T50,30 T75,30 T100,30 T125,30 T150,30 T175,30 T200,30 T225,30 T250,30 T275,30 T300,30 T325,30 T350,30 T375,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong>
+                    <div class="wave-activity-list">
+                        • 安静<br>
+                        • 目を閉じた覚醒状態<br>
+                        • 集中・瞑想
+                    </div>
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> バランス良好<br>
+                    心拍安定、血圧正常化
+                </div>
+            </div>
+            
+            <div class="brainwave-card beta">
+                <div class="wave-name">β波（ベータ波）通常の覚醒状態</div>
+                <div class="wave-freq">周波数調整範囲:13-30 Hz</div>
+                <div class="wave-visual">
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="beta-wave" d="M0,30 Q6.25,12 12.5,30 T25,30 T37.5,30 T50,30 T62.5,30 T75,30 T87.5,30 T100,30 T112.5,30 T125,30 T137.5,30 T150,30 T162.5,30 T175,30 T187.5,30 T200,30 T212.5,30 T225,30 T237.5,30 T250,30 T262.5,30 T275,30 T287.5,30 T300,30 T312.5,30 T325,30 T337.5,30 T350,30 T362.5,30 T375,30 T387.5,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong>
+                    <div class="wave-activity-list">
+                        • 覚醒状態<br>
+                        • 集中・思考<br>
+                        • 論理的活動
+                    </div>
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 交感神経やや優位<br>
+                    適度な覚醒、認知機能活性
+                </div>
+            </div>
+            
+            <div class="brainwave-card gamma">
+                <div class="wave-name">γ波（ガンマ波）高度な認知活動</div>
+                <div class="wave-freq">周波数調整範囲:30-100 Hz</div>
+                <div class="wave-visual">
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="gamma-wave" d="M0,30 Q3.125,18 6.25,30 T12.5,30 T18.75,30 T25,30 T31.25,30 T37.5,30 T43.75,30 T50,30 T56.25,30 T62.5,30 T68.75,30 T75,30 T81.25,30 T87.5,30 T93.75,30 T100,30 T106.25,30 T112.5,30 T118.75,30 T125,30 T131.25,30 T137.5,30 T143.75,30 T150,30 T156.25,30 T162.5,30 T168.75,30 T175,30 T181.25,30 T187.5,30 T193.75,30 T200,30 T206.25,30 T212.5,30 T218.75,30 T225,30 T231.25,30 T237.5,30 T243.75,30 T250,30 T256.25,30 T262.5,30 T268.75,30 T275,30 T281.25,30 T287.5,30 T293.75,30 T300,30 T306.25,30 T312.5,30 T318.75,30 T325,30 T331.25,30 T337.5,30 T343.75,30 T350,30 T356.25,30 T362.5,30 T368.75,30 T375,30 T381.25,30 T387.5,30 T393.75,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
+                </div>
+                <div class="wave-activity">
+                    <strong>活動状態:</strong>
+                    <div class="wave-activity-list">
+                        • 興奮<br>・ストレス<br>
+                        • 複雑な情報処理
+                    </div>
+                </div>
+                <div class="wave-autonomic">
+                    <strong>自律神経:</strong> 交感神経優位<br>
+                    心拍増加、血圧上昇、覚醒度最高
+                </div>
             </div>
         </div>
     </div>
