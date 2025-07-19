@@ -81,7 +81,7 @@
         
         .brainwave-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-top: 30px;
         }
@@ -247,6 +247,12 @@
             margin-top: 10px;
             font-size: 1em;
             color: #2c3e50;
+        }
+        
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .brainwave-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 768px) {
