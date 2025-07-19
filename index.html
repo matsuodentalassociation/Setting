@@ -14,7 +14,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
@@ -81,7 +81,7 @@
         
         .brainwave-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -277,13 +277,7 @@
             }
             
             .brainwave-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            @media (max-width: 480px) {
-                .brainwave-grid {
-                    grid-template-columns: 1fr;
-                }
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -407,7 +401,6 @@
                 </div>
                 <div class="wave-activity">
                     <strong>活動状態:</strong><br>
-                  
                     • 興奮・ストレス<br>
                     • 複雑な情報処理
                 </div>
