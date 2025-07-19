@@ -14,7 +14,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
@@ -70,6 +70,10 @@
             animation: pulse 2s infinite;
         }
         
+        .connection-arrow::after {
+            content: "⇄";
+        }
+        
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
@@ -77,7 +81,7 @@
         
         .brainwave-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-top: 30px;
         }
@@ -133,81 +137,56 @@
         .wave-visual {
             height: 60px;
             margin: 15px 0;
-            position: relative;
             background: #f8f9fa;
             border-radius: 8px;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .wave-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
+        .wave-svg {
             width: 100%;
-            height: 2px;
-            background: currentColor;
-            transform: translateY(-50%);
+            height: 100%;
         }
         
-        .delta .wave-line { 
-            background: #8e44ad;
-            animation: deltaWave 4s infinite linear;
-        }
-        .theta .wave-line { 
-            background: #3498db;
-            animation: thetaWave 2s infinite linear;
-        }
-        .alpha .wave-line { 
-            background: #2ecc71;
-            animation: alphaWave 1s infinite linear;
-        }
-        .beta .wave-line { 
-            background: #f39c12;
-            animation: betaWave 0.5s infinite linear;
-        }
-        .gamma .wave-line { 
-            background: #e74c3c;
-            animation: gammaWave 0.25s infinite linear;
+        .delta-wave {
+            stroke: #8e44ad;
+            fill: none;
+            stroke-width: 2;
+            animation: drawWave 4s infinite linear;
         }
         
-        @keyframes deltaWave {
-            0% { transform: translateY(-50%) scaleY(1); }
-            25% { transform: translateY(-50%) scaleY(3); }
-            50% { transform: translateY(-50%) scaleY(1); }
-            75% { transform: translateY(-50%) scaleY(3); }
-            100% { transform: translateY(-50%) scaleY(1); }
+        .theta-wave {
+            stroke: #3498db;
+            fill: none;
+            stroke-width: 2;
+            animation: drawWave 2s infinite linear;
         }
         
-        @keyframes thetaWave {
-            0% { transform: translateY(-50%) scaleY(1); }
-            25% { transform: translateY(-50%) scaleY(4); }
-            50% { transform: translateY(-50%) scaleY(1); }
-            75% { transform: translateY(-50%) scaleY(4); }
-            100% { transform: translateY(-50%) scaleY(1); }
+        .alpha-wave {
+            stroke: #2ecc71;
+            fill: none;
+            stroke-width: 2;
+            animation: drawWave 1s infinite linear;
         }
         
-        @keyframes alphaWave {
-            0% { transform: translateY(-50%) scaleY(1); }
-            25% { transform: translateY(-50%) scaleY(5); }
-            50% { transform: translateY(-50%) scaleY(1); }
-            75% { transform: translateY(-50%) scaleY(5); }
-            100% { transform: translateY(-50%) scaleY(1); }
+        .beta-wave {
+            stroke: #f39c12;
+            fill: none;
+            stroke-width: 2;
+            animation: drawWave 0.5s infinite linear;
         }
         
-        @keyframes betaWave {
-            0% { transform: translateY(-50%) scaleY(1); }
-            25% { transform: translateY(-50%) scaleY(3); }
-            50% { transform: translateY(-50%) scaleY(1); }
-            75% { transform: translateY(-50%) scaleY(3); }
-            100% { transform: translateY(-50%) scaleY(1); }
+        .gamma-wave {
+            stroke: #e74c3c;
+            fill: none;
+            stroke-width: 2;
+            animation: drawWave 0.25s infinite linear;
         }
         
-        @keyframes gammaWave {
-            0% { transform: translateY(-50%) scaleY(1); }
-            25% { transform: translateY(-50%) scaleY(2); }
-            50% { transform: translateY(-50%) scaleY(1); }
-            75% { transform: translateY(-50%) scaleY(2); }
-            100% { transform: translateY(-50%) scaleY(1); }
+        @keyframes drawWave {
+            0% { stroke-dashoffset: 400; }
+            100% { stroke-dashoffset: 0; }
         }
         
         .relationship-section {
@@ -252,6 +231,7 @@
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 15px;
+            text-align: center;
         }
         
         .nervous-description {
@@ -265,13 +245,20 @@
             border-radius: 8px;
             padding: 10px;
             margin-top: 10px;
-            font-size: 0.9em;
+            font-size: 1em;
             color: #2c3e50;
         }
         
         @media (max-width: 768px) {
             .main-diagram {
                 flex-direction: column;
+                align-items: center;
+            }
+            
+            .brain-section, .autonomic-section {
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
             }
             
             .relationship-content {
@@ -279,8 +266,24 @@
             }
             
             .connection-arrow {
-                transform: rotate(90deg);
                 margin: 20px 0;
+                font-size: 3em;
+                color: #e74c3c;
+                animation: pulse 2s infinite;
+            }
+            
+            .connection-arrow::after {
+                content: "↕";
+            }
+            
+            .brainwave-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            @media (max-width: 480px) {
+                .brainwave-grid {
+                    grid-template-columns: 1fr;
+                }
             }
         }
     </style>
@@ -300,7 +303,7 @@
                 </div>
             </div>
             
-            <div class="connection-arrow">⇄</div>
+            <div class="connection-arrow"></div>
             
             <div class="autonomic-section">
                 <div class="section-title">🫀 自律神経系</div>
@@ -315,14 +318,16 @@
         
         <div class="brainwave-grid">
             <div class="brainwave-card delta">
-                <div class="wave-name">δ波（デルタ波）</div>
+                <div class="wave-name">δ波（デルタ波）深い睡眠状態</div>
                 <div class="wave-freq">0.5-4 Hz</div>
                 <div class="wave-visual">
-                    <div class="wave-line"></div>
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="delta-wave" d="M0,30 Q50,10 100,30 T200,30 T300,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
                 </div>
                 <div class="wave-activity">
                     <strong>活動状態:</strong><br>
-                    • 深い睡眠（ノンレム睡眠）<br>
+                    • ノンレム睡眠<br>
                     • 無意識状態<br>
                     • 深いリラックス
                 </div>
@@ -333,14 +338,16 @@
             </div>
             
             <div class="brainwave-card theta">
-                <div class="wave-name">θ波（シータ波）</div>
+                <div class="wave-name">θ波（シータ波）浅い睡眠状態</div>
                 <div class="wave-freq">4-8 Hz</div>
                 <div class="wave-visual">
-                    <div class="wave-line"></div>
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="theta-wave" d="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30 T250,30 T300,30 T350,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
                 </div>
                 <div class="wave-activity">
                     <strong>活動状態:</strong><br>
-                    • 浅い睡眠・まどろみ<br>
+                    • まどろみ<br>
                     • 深い瞑想状態<br>
                     • 創造性・直感
                 </div>
@@ -351,14 +358,16 @@
             </div>
             
             <div class="brainwave-card alpha">
-                <div class="wave-name">α波（アルファ波）</div>
+                <div class="wave-name">α波（アルファ波）リラックス状態</div>
                 <div class="wave-freq">8-13 Hz</div>
                 <div class="wave-visual">
-                    <div class="wave-line"></div>
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="alpha-wave" d="M0,30 Q12.5,8 25,30 T50,30 T75,30 T100,30 T125,30 T150,30 T175,30 T200,30 T225,30 T250,30 T275,30 T300,30 T325,30 T350,30 T375,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
                 </div>
                 <div class="wave-activity">
                     <strong>活動状態:</strong><br>
-                    • リラックス・安静<br>
+                    • 安静<br>
                     • 目を閉じた覚醒状態<br>
                     • 集中・瞑想
                 </div>
@@ -369,14 +378,16 @@
             </div>
             
             <div class="brainwave-card beta">
-                <div class="wave-name">β波（ベータ波）</div>
+                <div class="wave-name">β波（ベータ波）通常の覚醒状態</div>
                 <div class="wave-freq">13-30 Hz</div>
                 <div class="wave-visual">
-                    <div class="wave-line"></div>
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="beta-wave" d="M0,30 Q6.25,12 12.5,30 T25,30 T37.5,30 T50,30 T62.5,30 T75,30 T87.5,30 T100,30 T112.5,30 T125,30 T137.5,30 T150,30 T162.5,30 T175,30 T187.5,30 T200,30 T212.5,30 T225,30 T237.5,30 T250,30 T262.5,30 T275,30 T287.5,30 T300,30 T312.5,30 T325,30 T337.5,30 T350,30 T362.5,30 T375,30 T387.5,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
                 </div>
                 <div class="wave-activity">
                     <strong>活動状態:</strong><br>
-                    • 通常の覚醒状態<br>
+                    • 覚醒状態<br>
                     • 集中・思考<br>
                     • 論理的活動
                 </div>
@@ -387,14 +398,16 @@
             </div>
             
             <div class="brainwave-card gamma">
-                <div class="wave-name">γ波（ガンマ波）</div>
+                <div class="wave-name">γ波（ガンマ波）高度な認知活動</div>
                 <div class="wave-freq">30-100 Hz</div>
                 <div class="wave-visual">
-                    <div class="wave-line"></div>
+                    <svg class="wave-svg" viewBox="0 0 400 60">
+                        <path class="gamma-wave" d="M0,30 Q3.125,18 6.25,30 T12.5,30 T18.75,30 T25,30 T31.25,30 T37.5,30 T43.75,30 T50,30 T56.25,30 T62.5,30 T68.75,30 T75,30 T81.25,30 T87.5,30 T93.75,30 T100,30 T106.25,30 T112.5,30 T118.75,30 T125,30 T131.25,30 T137.5,30 T143.75,30 T150,30 T156.25,30 T162.5,30 T168.75,30 T175,30 T181.25,30 T187.5,30 T193.75,30 T200,30 T206.25,30 T212.5,30 T218.75,30 T225,30 T231.25,30 T237.5,30 T243.75,30 T250,30 T256.25,30 T262.5,30 T268.75,30 T275,30 T281.25,30 T287.5,30 T293.75,30 T300,30 T306.25,30 T312.5,30 T318.75,30 T325,30 T331.25,30 T337.5,30 T343.75,30 T350,30 T356.25,30 T362.5,30 T368.75,30 T375,30 T381.25,30 T387.5,30 T393.75,30 T400,30" stroke-dasharray="400" stroke-dashoffset="400"/>
+                    </svg>
                 </div>
                 <div class="wave-activity">
                     <strong>活動状態:</strong><br>
-                    • 高度な認知活動<br>
+                  
                     • 興奮・ストレス<br>
                     • 複雑な情報処理
                 </div>
@@ -415,7 +428,6 @@
                         これにより脳の覚醒レベルが上昇し、β波やγ波が増加する。
                     </div>
                     <div class="wave-correlation">
-                        <strong>関連脳波:</strong> β波 ↑、γ波 ↑<br>
                         <strong>生理反応:</strong> 心拍数↑、血圧↑、呼吸数↑
                     </div>
                 </div>
@@ -427,7 +439,6 @@
                         これにより脳の活動が落ち着き、α波、θ波、δ波が増加する。
                     </div>
                     <div class="wave-correlation">
-                        <strong>関連脳波:</strong> α波 ↑、θ波 ↑、δ波 ↑<br>
                         <strong>生理反応:</strong> 心拍数↓、血圧↓、消化促進
                     </div>
                 </div>
