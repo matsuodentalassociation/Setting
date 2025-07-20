@@ -158,6 +158,46 @@
             color: #2c3e50;
         }
         
+        .frequency-adjustment-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #b8e6d3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .frequency-adjustment-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .frequency-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .frequency-item {
+            margin: 15px 0;
+            padding: 10px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #2c3e50;
+            text-align: left;
+        }
+        
+        .brainwave-section-title {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
         .brainwave-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -413,6 +453,17 @@
                 </div>
             </div>
         </div>
+        
+        <div class="frequency-adjustment-section">
+            <div class="frequency-adjustment-title">🔄 Synchrowave01の周波数調整の目安</div>
+            <div class="frequency-content">
+                <div class="frequency-item">自律神経のバランスを整えたい場合はシューマン共振波：7.83Hz</div>
+                <div class="frequency-item">睡眠を充実させたい場合は1Hzづつ下げて、ご自身に合う周波数を探してください。</div>
+                <div class="frequency-item">日中の集中力向上には35Hz以上でお試しください。</div>
+            </div>
+        </div>
+        
+        <div class="brainwave-section-title">代表的な脳波の周波数表</div>
         
         <div class="brainwave-grid">
             <div class="brainwave-card delta">
