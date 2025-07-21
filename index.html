@@ -533,9 +533,9 @@
             <div class="frequency-adjustment-title">🔄 Synchrowave01の周波数調整の目安</div>
             <div class="frequency-content">
                 <div class="frequency-alignment-wrapper">
-                    <div class="frequency-item left-aligned">自律神経のバランスを整えたい場合はシューマン共振波：7.83Hz</div>
+                    <div class="frequency-item left-aligned">自律神経のバランスを整えたい場合は基本周波数のシューマン共振波：7.83Hzをお試しください。</div>
                     <div class="frequency-item center-aligned">睡眠を充実させたい場合は1Hzづつ下げて、ご自身に合う周波数を探してください。</div>
-                    <div class="frequency-item left-aligned">日中の集中力向上には35Hzでお試しください。</div>
+                    <div class="frequency-item left-aligned">日中の集中力向上には5Hzづつ上げてご自身に合う周波数を探してください。。</div>
                 </div>
             </div>
         </div>
