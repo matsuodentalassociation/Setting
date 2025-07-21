@@ -178,15 +178,78 @@
             background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             padding: 20px;
+            position: relative;
         }
-
+        
         .frequency-item {
-            margin: 15px 0;
-            padding: 10px;
             font-size: 1.1em;
-            line-height: 1.6;
             color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* 中央配置の睡眠行（基準となる行） */
+        .frequency-item.center-aligned {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        /* 他の2行を睡眠行の左端に合わせる */
+        .alignment-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .alignment-container .frequency-item.center-aligned {
+            align-self: center;
+        }
+        
+        .alignment-container .frequency-item.left-aligned {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            /* 中央配置の睡眠行の左端に合わせるため、計算で位置調整 */
+            transform: translateX(calc(50% - 50%));
+        }
+        
+        .alignment-container .frequency-item.left-aligned:first-child {
+            top: -40px;
+        }
+        
+        .alignment-container .frequency-item.left-aligned:last-child {
+            bottom: -40px;
+        }
+        
+        /* より正確な位置合わせのための調整 */
+        .frequency-alignment-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 15px;
+            padding: 40px 0;
+        }
+        
+        .frequency-alignment-wrapper .frequency-item.center-aligned {
+            text-align: center;
+            align-self: center;
+            width: auto;
+            display: inline-block;
+        }
+        
+        .frequency-alignment-wrapper .frequency-item.left-aligned {
             text-align: left;
+            align-self: center;
+            width: auto;
+            display: inline-block;
+            /* 中央配置の睡眠行の開始位置に合わせる */
+            margin-left: calc(50% - 50%);
         }
         
         .brainwave-section-title {
@@ -339,6 +402,12 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .frequency-alignment-wrapper .frequency-item.left-aligned {
+                text-align: left;
+                margin-left: 0;
+                align-self: flex-start;
+            }
         }
         
         @media (max-width: 768px) {
@@ -378,6 +447,12 @@
             
             .wave-name {
                 font-size: 1.4em;
+            }
+            
+            .frequency-alignment-wrapper .frequency-item.left-aligned {
+                text-align: left;
+                margin-left: 0;
+                align-self: flex-start;
             }
         }
     </style>
@@ -457,9 +532,11 @@
         <div class="frequency-adjustment-section">
             <div class="frequency-adjustment-title">🔄 Synchrowave01の周波数調整の目安</div>
             <div class="frequency-content">
-                <div class="frequency-item">自律神経のバランスを整えたい場合はシューマン共振波：7.83Hz</div>
-                <div class="frequency-item">睡眠を充実させたい場合は1Hzづつ下げて、ご自身に合う周波数を探してください。</div>
-                <div class="frequency-item">日中の集中力向上には35Hz以上でお試しください。</div>
+                <div class="frequency-alignment-wrapper">
+                    <div class="frequency-item left-aligned">自律神経のバランスを整えたい場合はシューマン共振波：7.83Hz</div>
+                    <div class="frequency-item center-aligned">睡眠を充実させたい場合は1Hzづつ下げて、ご自身に合う周波数を探してください。</div>
+                    <div class="frequency-item left-aligned">日中の集中力向上には35Hzでお試しください。</div>
+                </div>
             </div>
         </div>
         
